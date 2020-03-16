@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  transition: all 0.5s ease;
+}
+
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.intro-text h1 {
+  font-size: 50px;
+}
+
+.intro-text p {
+  font-size: 24px;
+  color: #fff;
+  background-color: #000;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.page2 {
+  text-align: center;
+  width: 80%;
+}
+
+.page2 h1 {
+  margin-bottom: 18px;
+  font-size: 25px;
+}
+
+.page3 {
+  text-align: center;
+  width: 80%;
+}
+
+.page3 h1 {
+  margin-bottom: 18px;
+  font-size: 25px;
+}
+
+.bg-active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* section img {
+    width: 90%;
+    height: 70%;
+    object-fit: cover;
+} */
+
+::selection {
+  background-color: #000;
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: #000;
+  color: #fff;
+}
+
+a,
+:hover {
+  cursor: url("https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png"),
+    auto !important;
+  cursor: -webkit-image-set(
+        url("https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png")
+          1x,
+        url("https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png")
+          2x
+      )
+      0 0,
+    pointer !important;
+}
