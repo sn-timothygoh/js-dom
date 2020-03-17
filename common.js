@@ -9,10 +9,13 @@ bgChanger = () => {
 
 window.addEventListener("scroll", bgChanger);
 
-scrollPage = x => {
-  var target = document.querySelector(x);
-  var targetPosition = target.getBoundingClientRect();
-  var startPosition = window.pageYOffset;
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector(".nav-links");
+const links = document.querySelectorAll(".nav-links li");
 
-  console.log(startPosition);
-};
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+  links.forEach(item => {
+    item.classList.toggle("fade");
+  })
+});

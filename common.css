@@ -7,17 +7,97 @@
 body {
   background-color: #fff;
   color: #000;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   transition: all 0.5s ease;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  height: 10vh;
+  /* background-color: #000; */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  height: 100%;
+  width: 50%;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: auto;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #000;
 }
 
 header {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+  .line {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    margin: 8px;
+  }
+
+  .hamburger {
+    position: absolute;
+    right: 3%;
+    top: 2%;
+    transform: translate(-5%, -2%);
+    z-index: 2;
+  }
+
+  .nav-links {
+    position: fixed;
+    background-color: #000;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(100px at 105% -20%);
+    -webkit-clip-path: circle(100px at 105% -20%);
+    transition: all 1s ease-out;
+    pointer-events: none;
+  }
+
+  .nav-links.open {
+    clip-path: circle(1100px at 80% -20%);
+    -webkit-clip-path: circle(1100px at 90% -10%);
+    pointer-events: all;
+  }
+
+  .nav-links li {
+	  opacity: 0;
+  }
+
+  .nav-links li a {
+    color: #fff;
+  }
+
+  .nav-links li:nth-child(1) {
+	  transition: all 0.5s ease 0.25s;
+  }
+  .nav-links li:nth-child(2) {
+	transition: all 0.5s ease 0.5s;
+  }
+  .nav-links li:nth-child(3) {
+	transition: all 0.5s ease 0.75s;
+  }
+
+  .nav-links li.fade {
+	  opacity: 1;
+  }
 }
 
 .intro-text h1 {
@@ -85,12 +165,12 @@ section {
 
 a,
 :hover {
-  cursor: url("https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png"),
+  cursor: url('https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png'),
     auto !important;
   cursor: -webkit-image-set(
-        url("https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png")
+        url('https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png')
           1x,
-        url("https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png")
+        url('https://www.olivier-guilleux.com/wp-content/themes/oli/assets/dist/img/circle-cursor.png')
           2x
       )
       0 0,
