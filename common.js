@@ -1,3 +1,9 @@
+// Page loader
+window.addEventListener("load", function (){
+  const loader = document.querySelector('.loader');
+  loader.className += " hidden";
+});
+
 bgChanger = () => {
   //   console.log(this.scrollY);
   if (this.scrollY > this.innerHeight) {
