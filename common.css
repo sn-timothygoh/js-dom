@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #fff;
   color: #000;
@@ -12,42 +16,61 @@ body {
   transition: all 0.5s ease;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  text-align: justify;
 }
 
-nav {
-  height: 10vh;
-  /* background-color: #000; */
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  height: 100%;
-  width: 50%;
-  align-items: center;
-  justify-content: space-around;
-  margin-left: auto;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #000;
-}
-
+/* Navbar property */
 header {
-  height: 90vh;
+  /* height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  flex-direction: column;
+  flex-direction: column; */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+nav {
+  min-height: 10vh;
+  margin: auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav h1, nav ul {
+  font-size: 1.2rem;
+  flex: 1;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+}
+
+.bubble {
+  position: absolute;
+  z-index: -2;
+  background: linear-gradient(to right top, #f46b45 ,#eea849);
+  transform: scale(2);
+  transition: all 0.5s ease-out;
 }
 
 @media screen and (max-width: 768px) {
   .line {
     width: 30px;
     height: 3px;
-    background-color: #000;
+    background-color: #777;
     margin: 8px;
   }
 
@@ -100,58 +123,49 @@ header {
   }
 }
 
-.intro-text h1 {
-  font-size: 50px;
-}
-
-.intro-text p {
-  font-size: 24px;
-  color: #fff;
-  background-color: #000;
-}
-
+/* Content properties */
 section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-.white {
-  background-color: #fff;
+section h1 {
+  font-size: 5rem;
 }
 
-.page2 {
+.home {
+  background: linear-gradient(to right top, #f46b45 ,#eea849);
+}
+
+.about {
+  background: linear-gradient(to right top, #005c97 ,#363795);
+}
+
+.project {
+  background: linear-gradient(to right top, #e539e5 ,#e35b5e);
+}
+
+.contact {
+  background: linear-gradient(to right top, #43cea2, #185a9d);
+}
+
+.page1, .page2, .page3, .page4 {
   text-align: center;
   width: 80%;
 }
 
-.page2 h1 {
-  margin-bottom: 18px;
-  font-size: 25px;
-}
-
-.page3 {
-  text-align: center;
-  width: 80%;
-}
-
-.page3 h1 {
+.page1 h1, .page2 h1, .page3 h1, .page4 h1 {
   margin-bottom: 18px;
   font-size: 25px;
 }
 
 .bg-active {
-  background-color: #000;
+  /* background-color: #000; */
   color: #fff;
 }
-
-/* section img {
-    width: 90%;
-    height: 70%;
-    object-fit: cover;
-} */
 
 ::selection {
   background-color: #000;
