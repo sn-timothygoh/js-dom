@@ -68,8 +68,42 @@ function navCheck(entries) {
   });
 }
 
-// let navObserver = new IntersectionObserver(navCheck, options);
-
 sections.forEach(section => {
   observer.observe(section);
+});
+
+
+// Contact or social hover effect
+const fbHover = document.querySelector('.fb');
+const igHover = document.querySelector('.ig');
+const twHover = document.querySelector('.tw');
+
+fbHover.addEventListener("mouseover", function () {
+  igHover.style.opacity = ".4";
+  twHover.style.opacity = ".4";
+});
+
+igHover.addEventListener("mouseover", function () {
+  fbHover.style.opacity = ".4";
+  twHover.style.opacity = ".4";
+});
+
+twHover.addEventListener("mouseover", function() {
+  fbHover.style.opacity = ".4";
+  igHover.style.opacity = ".4";
+});
+
+fbHover.addEventListener("mouseout", function () {
+  igHover.style.opacity = "1";
+  twHover.style.opacity = "1";
+});
+
+igHover.addEventListener("mouseout", function () {
+  fbHover.style.opacity = "1";
+  twHover.style.opacity = "1";
+});
+
+twHover.addEventListener("mouseout", function () {
+  fbHover.style.opacity = "1";
+  igHover.style.opacity = "1";
 });
