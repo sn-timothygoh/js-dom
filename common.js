@@ -30,7 +30,7 @@ const sections = document.querySelectorAll("section");
 const bubble = document.querySelector(".bubble");
 const gradient = [
   "linear-gradient(to right top, #f46b45 ,#eea849)",
-  "linear-gradient(to right top, #005c97 ,#363795)",
+  "linear-gradient(to right top, #5c258d, #363795)",
   "linear-gradient(to right top, #e539e5 ,#e35b5e)",
   "linear-gradient(to right top, #43cea2, #185a9d)"
 ];
@@ -46,7 +46,7 @@ function navCheck(entries) {
   entries.forEach(entry => {
     // console.log(entry);
     const className = entry.target.className;
-    console.log(className);
+    // console.log(className);
     const activeAnchor = document.querySelector(`[data-page=${className}]`);
     const gradientIndex = entry.target.getAttribute("data-index");
     const coords = activeAnchor.getBoundingClientRect();
@@ -107,3 +107,30 @@ twHover.addEventListener("mouseout", function () {
   fbHover.style.opacity = "1";
   igHover.style.opacity = "1";
 });
+
+window.addEventListener("scroll", scrollAppear);
+
+function scrollAppear () {
+  const text = document.querySelector(".page2");
+  // const prevSection = document.querySelector("section:nth-child(2)");
+  // const prevSectionPos = prevSection.innerHeight;
+  // console.log(prevSectionPos);
+  const textPos = text.getBoundingClientRect().top * 1.3;
+  // console.log(textPos);
+  const winPos = window.innerHeight;
+  if (textPos < winPos) text.classList.add("appear");
+  else text.classList.remove("appear");
+}
+
+const git = document.getElementById("git");
+git.addEventListener("mouseover", function(event) {
+  event.target.className += " git-hover";
+  git.style.opacity = "1";
+});
+
+git.addEventListener("mouseout", function(event) {
+  // event.target.classList.remove("git-hover");
+  event.target.className -= " git-hover";
+  git.style.opacity = "0.4";
+  git.style.zIndex = "-1";
+})

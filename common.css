@@ -6,6 +6,15 @@
 
 html {
 	scroll-behavior: smooth;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+@-moz-document url-prefix() {
+	/* Disable scrollbar Firefox */
+	html {
+		scrollbar-width: none;
+	}
 }
 
 body {
@@ -17,6 +26,8 @@ body {
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	text-align: justify;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 }
 
 /* Loader properties (Loading Screen */
@@ -29,7 +40,7 @@ body {
 	overflow: hidden;
 	background: #000;
 	color: #fff;
-	font-size: 3rem;
+	font-size: 2rem;
 	font-weight: 400;
 	display: flex;
 	flex-direction: column;
@@ -41,8 +52,7 @@ body {
 .loader header h1 {
 	animation-delay: 0.8s;
 	animation-fill-mode: forwards;
-  -webkit-animation-fill-mode: forwards;
-  animation: loaderHero 1.8s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+	-webkit-animation-fill-mode: forwards;
 }
 
 .loader.hidden {
@@ -57,24 +67,11 @@ body {
 	}
 }
 
-@keyframes loaderHero {
-	0% {
-		transform: translateY(30vh);
-		opacity: 0 !important;
-		margin: 40px 0px 40px 0px;
-	}
-	100% {
-		transform: translateY(0vh);
-		opacity: 1 !important;
-		margin: 0px 0px 0px 0px;
-	}
-}
-
 .o-scroll {
 	height: 100%;
 	position: relative;
 	overflow: hidden;
-	transition: all 2.4s ease-out;
+	transition: all 1s ease-out;
 	transition-delay: 0.6s;
 	margin-top: 0vh;
 	opacity: 1;
@@ -148,6 +145,12 @@ nav ul {
 	flex: 1;
 }
 
+nav h1 {
+	background: -webkit-linear-gradient(#859398, #283048, #859398);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 nav ul {
 	list-style: none;
 	display: flex;
@@ -162,8 +165,8 @@ nav a {
 .bubble {
 	position: absolute;
 	z-index: -2;
-	background: linear-gradient(to right top, #f46b45, #eea849);
-	transform: scale(2);
+	/* background: linear-gradient(to right top, #f46b45, #eea849); */
+	transform: scale(1.5);
 	transition: all 0.5s ease-out;
 }
 
@@ -242,11 +245,33 @@ section h1 {
 }
 
 .about {
-	background: linear-gradient(to right top, #005c97, #363795);
+	background: linear-gradient(to right top, #5c258d, #363795);
+}
+
+.page2 {
+	opacity: 0;
+	transform: translateY(10vh);
+	transition: all 0.5s ease-in-out;
+}
+
+.appear {
+	opacity: 1;
+	transform: translateY(0px);
 }
 
 .project {
 	background: linear-gradient(to right top, #e539e5, #e35b5e);
+}
+
+#git {
+	opacity: 0.4;
+	transition: all 1s ease-in-out;
+}
+
+.git-hover {
+	transform: scale(1.2);
+	opacity: 1;
+	transition: all 1s ease-in-out;
 }
 
 .contact {
@@ -276,22 +301,17 @@ section h1 {
 	color: #000;
 }
 
-.hover-highligt {
-  color: #fff;
-  transition: all 0.5s ease-in;
-}
-
 .credits {
 	text-align: center;
 	font-family: 'SCTO', sans-serif;
 	font-size: 22px;
 	text-align: center;
 	width: 100%;
-  text-transform: uppercase;
-  top: -100;
+	text-transform: uppercase;
+	top: -100;
 }
 .credits a {
-	animation: heartbeat 1.4s infinite;
+	animation: heartbeat 1.2s infinite;
 }
 
 @keyframes heartbeat {
@@ -328,7 +348,17 @@ section h1 {
 .page3 h1,
 .page4 h1 {
 	margin-bottom: 18px;
-	font-size: 25px;
+	font-size: calc(62px + (212 - 140) * ((100vw - 300px) / (1920 - 300)));
+}
+
+.page1 h1 {
+	text-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.page1 h1 span {
+	background: -webkit-linear-gradient(#859398, #283048, #859398);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .bg-active {
@@ -355,4 +385,9 @@ a,
 			)
 			0 0,
 		pointer !important;
+}
+
+body::-webkit-scrollbar {
+	width: 0px;
+	background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
 }
