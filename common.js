@@ -19,12 +19,23 @@ const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector(".nav-links");
 const links = document.querySelectorAll(".nav-links li");
 
-hamburger.addEventListener("click", () => {
+// toggle menu burger
+// open nav
+hamburger.addEventListener("click", toggleNav);
+
+//close nav
+links.forEach(link => {
+  link.addEventListener("click", toggleNav)
+});
+
+function toggleNav () {
   navLinks.classList.toggle("open");
   links.forEach(item => {
     item.classList.toggle("fade");
-  })
-});
+  });
+}
+
+
 
 const sections = document.querySelectorAll("section");
 const bubble = document.querySelector(".bubble");
