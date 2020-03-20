@@ -1,11 +1,13 @@
-// Page loader
+// nav bar
 const hamburger = document.querySelector('.hamburger')
 const navLinks = document.querySelector('.nav-links')
 const links = document.querySelectorAll('.nav-links li')
 
+// section variable
 const sections = document.querySelectorAll('section')
 // const pages = document.querySelectorAll('section')
 
+// nav bubble (bg)
 const bubble = document.querySelector('.bubble')
 const gradient = [
   'linear-gradient(to right top, #f46b45 ,#eea849)',
@@ -50,6 +52,9 @@ window.addEventListener('scroll', function() {
 sections.forEach(section => {
   observer.observe(section)
 })
+
+// function to toggle nav on and off 
+// open nav
 hamburger.addEventListener('click', toggleNav)
 
 //close nav
@@ -62,6 +67,7 @@ links.forEach(link => {
 //   canScroll ? [deltaY < 0 ? slideBack() : slideNext()] : null
 // })
 
+// hover effect
 fbHover.addEventListener('mouseover', function() {
   igHover.style.opacity = '.4'
   twHover.style.opacity = '.4'
@@ -103,6 +109,8 @@ git.addEventListener('mouseout', function(event) {
   git.style.zIndex = '-1'
 })
 
+
+// text typing effect, filled with defined text
 function type() {
   if (count === texts.length){
     count = 0;
@@ -126,6 +134,7 @@ function toggleNav() {
   })
 }
 
+// check page location and fill nav bg
 function navCheck(entries) {
   entries.forEach(entry => {
     const className = entry.target.className
