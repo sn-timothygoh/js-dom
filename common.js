@@ -18,6 +18,12 @@ const options = {
 }
 let observer = new IntersectionObserver(navCheck, options)
 
+const texts = ["GradiUX"];
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
 let activePage = 0
 let canScroll = true
 
@@ -30,6 +36,8 @@ window.addEventListener('load', function() {
   const loader = document.querySelector('.loader')
   loader.className += ' hidden'
 })
+
+window.addEventListener('load', type);
 
 window.addEventListener('scroll', function() {
   const text = document.querySelector('.page2')
@@ -94,6 +102,22 @@ git.addEventListener('mouseout', function(event) {
   git.style.opacity = '0.4'
   git.style.zIndex = '-1'
 })
+
+function type() {
+  if (count === texts.length){
+    count = 0;
+  }
+
+  currentText = texts[count];
+  letter = currentText.slice(0, ++index);
+  
+  document.querySelector(".typing").textContent = letter;
+  if (letter.length === currentText.length) {
+    count++;
+    index = 0;
+  }
+  setTimeout(type, 400);
+}
 
 function toggleNav() {
   navLinks.classList.toggle('open')
