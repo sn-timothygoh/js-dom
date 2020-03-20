@@ -45,22 +45,22 @@ const gradient = [
 ]
 
 const options = {
-  threshold: 1,
+  threshold: 0.8,
 }
 
 let observer = new IntersectionObserver(navCheck, options)
 
 function navCheck(entries) {
-  // const navCheck = entries => {
   entries.forEach(entry => {
-    // console.log(entry);
-    const className = entry.target.className
-    // console.log(className);
-    const myClass = className.split(" ");
-    // console.log(myClass);
-    const activeAnchor = document.querySelector(`[data-page=${myClass[0]}]`)
-    const gradientIndex = entry.target.getAttribute('data-index')
-    const coords = activeAnchor.getBoundingClientRect()
+    const className = entry.target.className;
+    console.log(className);
+    const myClass = className.split(' ');
+    console.log(myClass);
+    const activeAnchor = document.querySelector(`[data-page=${myClass[0]}]`);
+    console.log(activeAnchor);
+    const gradientIndex = entry.target.getAttribute('data-index');
+    const coords = activeAnchor.getBoundingClientRect();
+    // console.log(coords);
     const directions = {
       height: coords.height,
       width: coords.width,
@@ -68,14 +68,14 @@ function navCheck(entries) {
       left: coords.left,
     }
 
-    if (entry.isIntersecting) {
+    // if (entry.isIntersecting) {
       bubble.style.setProperty('left', `${directions.left}px`)
       bubble.style.setProperty('top', `${directions.top}px`)
       bubble.style.setProperty('width', `${directions.width}px`)
       bubble.style.setProperty('height', `${directions.height}px`)
 
       bubble.style.background = gradient[gradientIndex]
-    }
+    // }
   })
 }
 
@@ -83,44 +83,42 @@ sections.forEach(section => {
   observer.observe(section)
 })
 
-window.addEventListener("wheel", scrollPage);
+window.addEventListener('wheel', scrollPage)
 
-let activePage = 0;
-const pages = document.querySelectorAll("section");
-let canScroll = true;
+let activePage = 0
+const pages = document.querySelectorAll('section')
+let canScroll = true
 
 function scrollPage(e) {
-  const { deltaY } = e;
-  console.log(deltaY);
-  console.log(canScroll);
-  if(canScroll) {
-    deltaY > 0 ? slideNext() : slideBack();
+  const { deltaY } = e
+  if (canScroll) {
+    deltaY > 0 ? slideNext() : slideBack()
   }
 }
 
 function slideNext() {
-  if(activePage >= pages.length - 1) {
-     return;
+  if (activePage >= pages.length - 1) {
+    return
   }
-  canScroll = false;
-  setTimeout(()=> canScroll = true, 1000);
-  pages[activePage].classList.remove("slide_active");
-  pages[activePage].classList.add("slide_watched");
-  activePage += 1;
-  pages[activePage].classList.add("slide_active");
-  pages[activePage].classList.remove("slide_watched");
+  canScroll = false
+  setTimeout(() => (canScroll = true), 1000)
+  pages[activePage].classList.remove('slide_active')
+  pages[activePage].classList.add('slide_watched')
+  activePage += 1
+  pages[activePage].classList.add('slide_active')
+  pages[activePage].classList.remove('slide_watched')
 }
 
 function slideBack() {
-  if(activePage <= 0) {
-     return;
+  if (activePage <= 0) {
+    return
   }
-  canScroll = false;
-  setTimeout(()=> canScroll = true, 1000);
-  pages[activePage].classList.remove("slide_active");
-  activePage -= 1;
-  pages[activePage].classList.add("slide_active");
-  pages[activePage].classList.remove("slide_watched");
+  canScroll = false
+  setTimeout(() => (canScroll = true), 1000)
+  pages[activePage].classList.remove('slide_active')
+  activePage -= 1
+  pages[activePage].classList.add('slide_active')
+  pages[activePage].classList.remove('slide_watched')
 }
 
 // Contact or social hover effect
@@ -162,7 +160,7 @@ window.addEventListener('scroll', scrollAppear)
 
 function scrollAppear() {
   const text = document.querySelector('.page2')
-  const textPos = text.getBoundingClientRect().top * 1.3
+  const textPos = text.getBoundingClientRect().left
   const winPos = window.innerHeight
   if (textPos < winPos) text.classList.add('appear')
   else text.classList.remove('appear')
